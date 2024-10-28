@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  clerkUserId String   @unique // Store Clerk's unique user ID
+  email       String   @unique
+  username    String? // Optional, if you want to allow custom usernames
+  forms       Form[]   @relation("UserForms")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Form {
+  id          Int        @id @default(autoincrement())
+  user        User       @relation("UserForms", fields: [clerkUserId], references: [clerkUserId]) // Updated relation
+  clerkUserId String // Use clerkUserId instead of userId
+  name        String
+  fields      Json // Store form structure in JSON format
+  responses   Response[] @relation("FormResponses")
+  createdAt   DateTime   @default(now())
+}
+
+model Response {
+  id        Int      @id @default(autoincrement())
+  form      Form     @relation("FormResponses", fields: [formId], references: [id])
+  formId    Int
+  userId    Int // ID of the user who submitted the response
+  data      Json // Store the actual response in JSON format
+  createdAt DateTime @default(now())
+}
