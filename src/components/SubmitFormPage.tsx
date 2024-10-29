@@ -21,7 +21,7 @@ const SubmitFormPage = ({ slug }: { slug: string }) => {
     const [fields, setFields] = useState<FormField[]>([]);
     const [formData, setFormData] = useState<Record<string, any>>({});
 
-    var base_url = process.env.NEXT_PUBLIC_API_BASE_URL;
+    const base_url = process.env.NEXT_PUBLIC_API_BASE_URL;
     console.log(base_url);
 
     useEffect(() => {

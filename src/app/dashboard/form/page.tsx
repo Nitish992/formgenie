@@ -22,10 +22,10 @@ interface Form {
 function FormsPage() {
     const [file, setFile] = useState<File | null>(null);
     const [recentForms, setRecentForms] = useState<Form[]>([]);
-    const { isSignedIn, user, isLoaded } = useUser();
+    const { user } = useUser();
 
     const base_url = process.env.NEXT_PUBLIC_API_BASE_URL;
-    console.log(base_url);
+    //console.log(base_url);
 
     const [tableUserId, setTableUserId] = useState<string | null>(null);
 

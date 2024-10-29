@@ -1,4 +1,4 @@
-import { BookText, FormInputIcon, NotepadText } from "lucide-react";
+import { NotepadText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 

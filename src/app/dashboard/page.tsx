@@ -5,7 +5,7 @@ import axios from "axios";
 async function DashboardPage() {
     const user = await currentUser();
 
-    var base_url = process.env.NEXT_PUBLIC_API_BASE_URL
+    const base_url = process.env.NEXT_PUBLIC_API_BASE_URL
 
     if (user) {
         const userData = {

@@ -1,13 +1,13 @@
 
 import CTAButtons from "@/components/CTAButtons";
-import { AccessibilityIcon, BarChartIcon, CogIcon } from "lucide-react";
+import { AccessibilityIcon, BarChartIcon } from "lucide-react";
 import {
   Card,
   CardContent,
   CardHeader,
 
 } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+
 
 const features = [
   {

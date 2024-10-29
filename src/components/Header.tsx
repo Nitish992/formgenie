@@ -1,10 +1,17 @@
 
 import Link from "next/link";
-import { Grip } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 
 
-function Header() {
+
+/*************  ✨ Codeium Command ⭐  *************/
+/**
+ * The topmost header of the application, containing the app title
+ * and a button to sign in or out.
+ *
+ * @returns The header element.
+ */
+/******  bdda2dfa-2f2f-4b98-b13b-3ffae3a84d9a  *******/function Header() {
     return (
         <header className="w-full h-[80px] flex justify-between items-center px-4 md:px-6 bg-white bg-opacity-90 backdrop-filter backdrop-blur-md shadow-md sticky top-0 z-50">
             <div className="flex items-center space-x-2">
