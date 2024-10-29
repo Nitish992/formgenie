@@ -21,9 +21,12 @@ const SubmitFormPage = ({ slug }: { slug: string }) => {
     const [fields, setFields] = useState<FormField[]>([]);
     const [formData, setFormData] = useState<Record<string, any>>({});
 
+    var base_url = process.env.NEXT_PUBLIC_API_BASE_URL;
+    console.log(base_url);
+
     useEffect(() => {
         if (slug) {
-            axios.get(`http://localhost:6004/form/${slug}`)
+            axios.get(`${base_url}/form/${slug}`)
                 .then((response) => setFields(response.data.fields))
                 .catch((error) => console.error("Error fetching form data:", error));
         }
@@ -49,8 +52,10 @@ const SubmitFormPage = ({ slug }: { slug: string }) => {
             data: formData,
         };
         try {
-            console.log("Looking or orinetation", formattedData);
-            await axios.post(`http://localhost:6004/form/${slug}/submit`, formattedData);
+            console.log("Looking or orientation", formattedData);
+
+            await axios.post(`${base_url}/form/${slug}/submit`, formattedData);
+
             alert("Form submitted successfully!");
         } catch (error) {
             console.error("Error submitting form:", error);

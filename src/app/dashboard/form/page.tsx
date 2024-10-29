@@ -24,15 +24,21 @@ function FormsPage() {
     const [recentForms, setRecentForms] = useState<Form[]>([]);
     const { isSignedIn, user, isLoaded } = useUser();
 
+    const base_url = process.env.NEXT_PUBLIC_API_BASE_URL;
+    console.log(base_url);
+
     const [tableUserId, setTableUserId] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchTableUserId = async () => {
             if (user?.id && !tableUserId) {
                 try {
-                    const response = await axios.get(`http://localhost:6004/user/${user.id}`);
+                    const url = `${base_url}/user/${user.id}`;
+                    const response = await axios.get(url);
+
                     setTableUserId(response.data.user_id);
-                    console.log("Got the table user ID:", response.data.user_id);
+
+                    console.log("Got the table user ID:", response.data.user_id, url);
                 } catch (error) {
                     console.error("Failed to fetch table user ID:", error);
                 }
@@ -46,8 +52,10 @@ function FormsPage() {
         const fetchRecentForms = async () => {
             if (tableUserId) {
                 try {
-                    const response = await axios.get(`http://localhost:6004/user/${tableUserId}/forms`);
+                    const response = await axios.get(`${base_url}/user/${tableUserId}/forms`);
+
                     setRecentForms(response.data.forms);
+
                     console.log("Users recent Forms from state", recentForms);
                     console.log("Users recent Forms from response", response.data);
                 } catch (error) {
@@ -82,7 +90,7 @@ function FormsPage() {
             // setRecentForms(recent_form_response.data);
             // console.log("Users recent Forms from state", recentForms);
 
-            const response = await axios.post("http://localhost:6004/upload", formData, {
+            const response = await axios.post(`${base_url}/upload`, formData, {
                 headers: { "Content-Type": "multipart/form-data" },
                 params: { user_id: tableUserId },
             });

@@ -17,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "FormGenie",
+  title: "Formatic",
   description: "Create From in Seconds",
 };
 

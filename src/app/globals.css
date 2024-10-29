@@ -10,8 +10,8 @@ body {
 @layer base {
   :root {
 
-    /* --background: 0 0% 100%; */
-    --background: 176.1 69.4% 21.8%;
+    --background: 0 0% 100%;
+    /* --background: 176.1 69.4% 21.8%; */
 
     --foreground: 0 0% 3.9%;
 
