@@ -38,7 +38,7 @@ function FormsPage() {
 
                     setTableUserId(response.data.user_id);
 
-                    console.log("Got the table user ID:", response.data.user_id, url);
+                    //console.log("Got the table user ID:", response.data.user_id, url);
                 } catch (error) {
                     console.error("Failed to fetch table user ID:", error);
                 }
@@ -56,8 +56,8 @@ function FormsPage() {
 
                     setRecentForms(response.data.forms);
 
-                    console.log("Users recent Forms from state", recentForms);
-                    console.log("Users recent Forms from response", response.data);
+                    //console.log("Users recent Forms from state", recentForms);
+                    //console.log("Users recent Forms from response", response.data);
                 } catch (error) {
                     console.error("Failed to fetch recent forms:", error);
                 }
@@ -81,14 +81,6 @@ function FormsPage() {
         formData.append("file", file);
 
         try {
-
-            // const temp = await axios.get(`http://localhost:6004/user/${user?.id}`);
-            // console.log("From the file upload", user?.id);
-            // const user_table_id = temp.data.user_id;
-
-            // const recent_form_response = await axios.get(`http://localhost:6004/user/${user?.id}/forms`);
-            // setRecentForms(recent_form_response.data);
-            // console.log("Users recent Forms from state", recentForms);
 
             const response = await axios.post(`${base_url}/upload`, formData, {
                 headers: { "Content-Type": "multipart/form-data" },
@@ -131,7 +123,7 @@ function FormsPage() {
                                 <CardHeader>
                                     <CardTitle>{form.name}</CardTitle>
                                     <CardDescription>Form ID: {form.form_id}</CardDescription>
-                                    {/* Add creation date if available */}
+
                                 </CardHeader>
                             </Card>
                         </Link>

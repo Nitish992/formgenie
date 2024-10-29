@@ -6,9 +6,6 @@ function LandingHeader() {
     return (
         <header className="w-full h-[80px] flex justify-between items-center px-4 md:px-6 bg-white bg-opacity-90 backdrop-filter backdrop-blur-md shadow-md sticky top-0 z-50">
             <div className="font-bold text-xl md:text-4xl flex items-center">
-                {/* <FormInputIcon className="w-6 h-6 mr-2" /> */}
-                {/* <BookText className="w-6 h-6 mr-2" /> */}
-                {/* <NotepadText className="w-6 h-6 mr-2" /> */}
                 <Image
                     src="/logo.png"
                     width={70}
@@ -24,15 +21,7 @@ function LandingHeader() {
                     <li>
                         <Button variant="link" className="text-black">Home</Button>
                     </li>
-                    {/* <li>
-                        <Button variant="link">About</Button>
-                    </li>
-                    <li>
-                        <Button variant="link">Services</Button>
-                    </li>
-                    <li>
-                        <Button variant="link">Contact</Button>
-                    </li> */}
+
                     <li>
                         <SignedOut>
                             <Button asChild>

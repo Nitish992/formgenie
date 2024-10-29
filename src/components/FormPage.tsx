@@ -33,19 +33,19 @@ const FormPage = ({ slug }: { slug: string }) => {
             axios.get(`${base_url}/form/${slug}`)
                 .then((response) => setFields(response.data.fields))
                 .catch((error) => console.error("Error fetching form data:", error));
-            setShareLink(`http://localhost:3000/form/${slug}`); // Update the link accordingly
+            setShareLink(`http://localhost:3000/form/${slug}`);
         }
     }, [slug]);
 
     useEffect(() => {
         if (slug) {
-            console.log("Responses API called");
+            //console.log("Responses API called");
             const url = `${base_url}/form/${slug}/responses`;
-            console.log(url);
+            //console.log(url);
             axios.get(url)
                 .then((response) => {
                     setResponses(response.data.responses);
-                    console.log("Fetched responses:", response.data); // Log the fetched data here
+                    //console.log("Fetched responses:", response.data); // Log the fetched data here
                 })
                 .catch((error) => console.error("Error fetching responses:", error));
         }
@@ -156,7 +156,7 @@ const FormPage = ({ slug }: { slug: string }) => {
                 </TabsContent>
                 <TabsContent value="responses">
                     <Label htmlFor="terms" className="text-lg font-semibold">Total Responses: {responses.length}</Label>
-                    {/* <Button>Export Button</Button> */}
+
                     <ResponseChart responses={responses} fields={fields} />
 
                 </TabsContent>

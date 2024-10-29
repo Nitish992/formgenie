@@ -2,7 +2,7 @@
 import FormPage from "@/components/FormPage";
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params; // Await params to get the slug
+    const { slug } = await params;
     return <FormPage slug={slug} />;
 }
 

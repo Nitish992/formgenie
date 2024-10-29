@@ -9,17 +9,17 @@ async function DashboardPage() {
 
     if (user) {
         const userData = {
-            clerk_user_id: user.id, // Use the Clerk user ID
+            clerk_user_id: user.id,
             email: user.emailAddresses[0].emailAddress,
 
         };
 
         try {
-            await axios.post(`${base_url}/register`, userData); // Replace with your actual API URL
+            await axios.post(`${base_url}/register`, userData);
             //redirect("/dashboard/form");
         } catch (error) {
             console.error("Error saving user data:", error);
-            // Handle error as needed
+
         }
     }
     redirect("/dashboard/form");

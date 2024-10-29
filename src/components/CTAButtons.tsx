@@ -14,9 +14,6 @@ function CTAButtons({ className }: { className?: string }) {
                 <Link href={"/dashboard"}>Get Started</Link>
             </Button>
 
-            {/* <Button asChild variant={"outline"}>
-                <Link href={"/learn-more"}>Learn More</Link>
-            </Button> */}
         </div>
     );
 }

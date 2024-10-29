@@ -36,16 +36,6 @@ const SubmitFormPage = ({ slug }: { slug: string }) => {
         setFormData((prev) => ({ ...prev, [label]: value }));
     };
 
-    // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-    //     try {
-    //         console.log(JSON.stringify(formData));
-    //         //await axios.post(`http://localhost:6004/form/${slug}/submit`, formData);
-    //         alert("Form submitted successfully!");
-    //     } catch (error) {
-    //         console.error("Error submitting form:", error);
-    //     }
-    // };
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formattedData = {
