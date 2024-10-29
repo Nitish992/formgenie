@@ -13,7 +13,7 @@ const features = [
   {
     title: "Quick Creation",
     description:
-      "Create forms in seconds just by uploading a CSV or JSON file.",
+      "Create forms in seconds just by uploading a CSV or JSON file. Currently Supports only Text, Dropdown, Multiple Choice and Checkbox fields.",
     icon: <AccessibilityIcon className="w-6 h-6" />,
   },
 
@@ -41,9 +41,9 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                Create Form quickly, with FormGenie
+                Create Form quickly, with ForMatic
               </h1>
-              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+              <p className="mx-auto max-w-[700px] text-black-500 md:text-xl dark:text-gray-400">
                 Easily create and share online forms and surveys, and
                 analyze the responses.
               </p>
@@ -56,7 +56,7 @@ export default function Home() {
         <div className="container grid items-center gap-4 px-4 md:px-6 lg:gap-10">
           <div className="space-y-3">
             <h2 className="text-3xl flex justify-center font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Why FormGenie?
+              Why ForMatic?
             </h2>
 
           </div>

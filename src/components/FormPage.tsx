@@ -33,7 +33,7 @@ const FormPage = ({ slug }: { slug: string }) => {
             axios.get(`${base_url}/form/${slug}`)
                 .then((response) => setFields(response.data.fields))
                 .catch((error) => console.error("Error fetching form data:", error));
-            setShareLink(`${base_url}/form/${slug}`); // Update the link accordingly
+            setShareLink(`http://localhost:3000/form/${slug}`); // Update the link accordingly
         }
     }, [slug]);
 
@@ -67,6 +67,8 @@ const FormPage = ({ slug }: { slug: string }) => {
         }
     };
 
+
+
     const copyToClipboard = () => {
         navigator.clipboard.writeText(shareLink);
         alert("Link copied to clipboard!");
@@ -74,7 +76,7 @@ const FormPage = ({ slug }: { slug: string }) => {
 
     return (
         <div className="flex flex-col items-center m-10">
-            <Tabs defaultValue="form" className="w-3/5 m-10">
+            <Tabs defaultValue="form" className="w-3/5 m-10 bg-white rounded-lg md:p-10 shadow-2xl">
                 <TabsList className="flex justify-center">
                     <TabsTrigger value="form">Form</TabsTrigger>
                     <TabsTrigger value="responses">Responses</TabsTrigger>
@@ -85,12 +87,12 @@ const FormPage = ({ slug }: { slug: string }) => {
                         <DialogTrigger asChild>
                             <Button className="my-4">Share Form</Button>
                         </DialogTrigger>
-                        <DialogContent>
+                        <DialogContent className="bg-white">
                             <DialogTitle>Share this link</DialogTitle>
                             <DialogDescription>
                                 <span>Copy this link to share the form:</span>
                                 <div className="flex items-center">
-                                    <Input value={shareLink} readOnly />
+                                    <Input className="bg-white mx-2" value={shareLink} readOnly />
                                     <Button onClick={copyToClipboard}>Copy</Button>
                                 </div>
                             </DialogDescription>
@@ -101,7 +103,7 @@ const FormPage = ({ slug }: { slug: string }) => {
                             <div key={field.label} className="flex flex-col">
                                 <label className="font-semibold mb-1">{field.label}</label>
                                 {field.type === "Text" && (
-                                    <Input className="w-3/5"
+                                    <Input className="w-3/5 bg-white"
                                         type="text"
                                         required={field.validation.required}
                                         onChange={(e) => handleInputChange(field.label, e.target.value)}
@@ -113,7 +115,7 @@ const FormPage = ({ slug }: { slug: string }) => {
                                         required={field.validation.required}
                                         onValueChange={(value: string) => handleInputChange(field.label, value)}
                                     >
-                                        <SelectTrigger className="w-3/5">
+                                        <SelectTrigger className="w-3/5 bg-white">
                                             <SelectValue placeholder="Select an option" />
                                         </SelectTrigger>
                                         <SelectContent>
@@ -154,6 +156,7 @@ const FormPage = ({ slug }: { slug: string }) => {
                 </TabsContent>
                 <TabsContent value="responses">
                     <Label htmlFor="terms" className="text-lg font-semibold">Total Responses: {responses.length}</Label>
+                    {/* <Button>Export Button</Button> */}
                     <ResponseChart responses={responses} fields={fields} />
 
                 </TabsContent>

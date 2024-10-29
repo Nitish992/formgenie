@@ -65,14 +65,15 @@ const SubmitFormPage = ({ slug }: { slug: string }) => {
     return (
         <>
             <SubmitFormHeader />
-            <div className="w-full flex justify-center my-24">
-                <form onSubmit={handleSubmit} className="w-[700px] space-y-4">
+            <div className="w-full flex justify-center my-24 ">
+                <form onSubmit={handleSubmit} className="w-[700px] space-y-4 bg-white rounded-lg p-8">
                     {fields.map((field) => (
                         <div key={field.label} className="flex flex-col">
-                            <label className="font-semibold mb-1">{field.label}</label>
+                            <label className="font-semibold mb-1 ">{field.label}</label>
                             {field.type === "Text" && (
                                 <Input
                                     type="text"
+                                    className="bg-white"
                                     required={field.validation.required}
                                     onChange={(e) => handleInputChange(field.label, e.target.value)}
                                 />
@@ -82,8 +83,8 @@ const SubmitFormPage = ({ slug }: { slug: string }) => {
                                     required={field.validation.required}
                                     onValueChange={(value: string) => handleInputChange(field.label, value)}
                                 >
-                                    <SelectTrigger>
-                                        <SelectValue placeholder="Select an option" />
+                                    <SelectTrigger className="bg-white">
+                                        <SelectValue placeholder="Select an option" className="bg-white" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         {field.options.map((option) => (

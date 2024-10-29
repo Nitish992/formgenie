@@ -106,9 +106,9 @@ function FormsPage() {
     return (
         <>
             <main className="max-w-6xl mx-auto">
-                <div className="grid w-full max-w-sm items-center gap-1.5 pt-10 my-5">
-                    <Label htmlFor="file">Excel or JSON File</Label>
-                    <Input id="picture" type="file" onChange={(e) => {
+                <div className="grid w-full max-w-sm items-center gap-1.5 pt-10 my-5 ">
+                    <Label htmlFor="file" className="text-white">Excel or JSON File</Label>
+                    <Input className="bg-white" id="picture" type="file" onChange={(e) => {
                         const files = e.target.files;
                         if (files) {
                             setFile(files[0]);
@@ -121,13 +121,13 @@ function FormsPage() {
 
                 <Separator className="my-10" />
 
-                <p className="text-2xl ...">Recent Forms</p>
+                <p className="text-2xl ... text-white">Recent Forms</p>
 
 
-                <div className="grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {recentForms.map((form) => (
                         <Link key={form.form_id} href={`/dashboard/form/${form.form_id}`} passHref>
-                            <Card className="w-[350px] my-2 cursor-pointer hover:shadow-lg">
+                            <Card className="w-full my-2 cursor-pointer hover:shadow-lg">
                                 <CardHeader>
                                     <CardTitle>{form.name}</CardTitle>
                                     <CardDescription>Form ID: {form.form_id}</CardDescription>
