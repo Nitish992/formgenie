@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
+import SubmitFormHeader from "./SubmitFormHeader";
 
 interface FormField {
     label: string;
@@ -57,62 +58,65 @@ const SubmitFormPage = ({ slug }: { slug: string }) => {
     };
 
     return (
-        <div className="w-full">
-            <form onSubmit={handleSubmit} className="space-y-4">
-                {fields.map((field) => (
-                    <div key={field.label} className="flex flex-col">
-                        <label className="font-semibold mb-1">{field.label}</label>
-                        {field.type === "Text" && (
-                            <Input
-                                type="text"
-                                required={field.validation.required}
-                                onChange={(e) => handleInputChange(field.label, e.target.value)}
-                            />
-                        )}
-                        {field.type === "Dropdown" && field.options && (
-                            <Select
-                                required={field.validation.required}
-                                onValueChange={(value: string) => handleInputChange(field.label, value)}
-                            >
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select an option" />
-                                </SelectTrigger>
-                                <SelectContent>
+        <>
+            <SubmitFormHeader />
+            <div className="w-full flex justify-center my-24">
+                <form onSubmit={handleSubmit} className="w-[700px] space-y-4">
+                    {fields.map((field) => (
+                        <div key={field.label} className="flex flex-col">
+                            <label className="font-semibold mb-1">{field.label}</label>
+                            {field.type === "Text" && (
+                                <Input
+                                    type="text"
+                                    required={field.validation.required}
+                                    onChange={(e) => handleInputChange(field.label, e.target.value)}
+                                />
+                            )}
+                            {field.type === "Dropdown" && field.options && (
+                                <Select
+                                    required={field.validation.required}
+                                    onValueChange={(value: string) => handleInputChange(field.label, value)}
+                                >
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select an option" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {field.options.map((option) => (
+                                            <SelectItem key={option} value={option}>
+                                                {option}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            )}
+                            {field.type === "Multiple Choice" && field.options && (
+                                <div className="space-y-1">
                                     {field.options.map((option) => (
-                                        <SelectItem key={option} value={option}>
-                                            {option}
-                                        </SelectItem>
+                                        <div key={option} className="flex items-center space-x-2">
+                                            <Checkbox
+                                                checked={formData[field.label]?.[option] || false}
+                                                onCheckedChange={(checked) => handleInputChange(field.label, {
+                                                    ...formData[field.label],
+                                                    [option]: checked,
+                                                })}
+                                            />
+                                            <span>{option}</span>
+                                        </div>
                                     ))}
-                                </SelectContent>
-                            </Select>
-                        )}
-                        {field.type === "Multiple Choice" && field.options && (
-                            <div className="space-y-1">
-                                {field.options.map((option) => (
-                                    <div key={option} className="flex items-center space-x-2">
-                                        <Checkbox
-                                            checked={formData[field.label]?.[option] || false}
-                                            onCheckedChange={(checked) => handleInputChange(field.label, {
-                                                ...formData[field.label],
-                                                [option]: checked,
-                                            })}
-                                        />
-                                        <span>{option}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                        {field.type === "Checkbox" && (
-                            <Checkbox
-                                checked={formData[field.label] || false}
-                                onCheckedChange={(checked) => handleInputChange(field.label, checked)}
-                            />
-                        )}
-                    </div>
-                ))}
-                <Button type="submit">Submit</Button>
-            </form>
-        </div>
+                                </div>
+                            )}
+                            {field.type === "Checkbox" && (
+                                <Checkbox
+                                    checked={formData[field.label] || false}
+                                    onCheckedChange={(checked) => handleInputChange(field.label, checked)}
+                                />
+                            )}
+                        </div>
+                    ))}
+                    <Button type="submit" className="center">Submit</Button>
+                </form>
+            </div>
+        </>
     );
 };
 

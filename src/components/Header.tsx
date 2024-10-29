@@ -1,9 +1,8 @@
-import Image from "next/image";
+
 import Link from "next/link";
-// import logo from "public/logo.png";
 import { Grip } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
-import { Suspense } from "react";
+
 
 function Header() {
     return (
